@@ -1,9 +1,16 @@
-package com.yahui.wxtms.domain;
+package com.yahui.wxtms.domain.manage;
 
-public class Supplier extends BasicDomain{
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+import com.yahui.wxtms.domain.BasicDomain;
+
+@Entity
+public class Customer extends BasicDomain{
 	
 	private String name;
-	private int mobileNumber;
+	
+	@ManyToOne
 	private ContactInfo contactInfo;
 	
 	public String getName() {
@@ -12,18 +19,11 @@ public class Supplier extends BasicDomain{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getMobileNumber() {
-		return mobileNumber;
-	}
-	public void setMobileNumber(int mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
 	public ContactInfo getContactInfo() {
 		return contactInfo;
 	}
 	public void setContactInfo(ContactInfo contactInfo) {
 		this.contactInfo = contactInfo;
 	}
-	
 
 }

@@ -1,7 +1,7 @@
 package com.yahui.wxtms.enumeration;
 
-public enum CloSize {
+public enum CloUnit {
 	
-	CS_100_52, CS_90_50
+	PIECE, SUIT
 
 }

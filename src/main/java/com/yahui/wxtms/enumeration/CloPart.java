@@ -2,5 +2,5 @@ package com.yahui.wxtms.enumeration;
 
 public enum CloPart {
 
-	UPPER, LOWER
+	UPPER, LOWER, SUIT
 }

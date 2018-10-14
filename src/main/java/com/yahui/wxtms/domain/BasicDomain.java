@@ -8,26 +8,35 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.domain.Persistable;
 
 @MappedSuperclass
 public class BasicDomain implements Persistable<String> {
 
 	@Id
-	@GenericGenerator(name = "idGenerator", strategy = "uuid")
-	@GeneratedValue(generator = "idGenerator")
+//	@GenericGenerator(name = "idGenerator", strategy = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator" )
+	@GeneratedValue(generator = "uuid")
 	@Column(length = 40)
 	private String id;
 	
-	@Column(length = 40)
+	@Column(nullable = false, length = 40)
 	private String createUserId;
 	
-	@Column(length = 40)
+	@Column(nullable = false, length = 40)
 	private String updateUserId;
 	
+	@Column
+	@CreatedDate
 	private Date createDate;
 	
+	@Column
+	@LastModifiedDate
 	private Date updateDate;
+	
+	private String comment;
 
 	@Override
 	public String getId() {
@@ -73,6 +82,14 @@ public class BasicDomain implements Persistable<String> {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	@Override
