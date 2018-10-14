@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Login</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title th:text="${title}">WXTMS</title>
+<script src="../../js/jquery.slim.min.js"
+	th:href="@{/js/jquery.slim.min.js}"></script>
+<script src="../../js/popper.min.js" th:href="@{/js/popper.min.js}"></script>
+<script src="../../js/bootstrap.min.js"
+	th:href="@{/js/bootstrap.min.js}"></script>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+	href="../../css/bootstrap.min.css" />
+
+<link rel="stylesheet" th:href="@{/css/signin.css}"
+	href="../../css/signin.css" />
+
+<link rel="icon" href="../../images/favicon.ico"
+	th:href="@{/images/favicon.ico}" />
+
+</head>
+<body class="text-center">
+	<div th:if="${result != null && result.verified == false}" class="alert alert-danger fixed-top" role="alert">
+	  Login failed! User name password don't match or user name doesn't exist.
+	</div>
+	<form class="form-signin" action="/login" method="post">
+		<!-- <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt=""
+			width="72" height="72"> -->
+		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+		<label for="inputUserName" class="sr-only">User Name</label> <input
+			type="text" id="inputUserName" name="userName" class="form-control"
+			placeholder="User Name" th:value="${result}? (${result.user}? ${result.user.userName})" required autofocus> <label
+			for="inputPassword" class="sr-only">Password</label> <input
+			type="password" id="inputPassword" name="password" class="form-control" th:value="${result}? (${result.user}? ${result.user.password})"
+			placeholder="Password" required>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+			in</button>
+		<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+	</form>
+</body>
+</html>
